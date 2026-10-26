@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="lamp illustration">
+  <defs><radialGradient id="glow"><stop stop-color="#ffffff" stop-opacity=".26"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="400" cy="399" r="340" fill="url(#glow)" />
+  <ellipse cx="414" cy="696" rx="241" ry="28" fill="#637863" opacity=".15"/><ellipse cx="408" cy="372" rx="268" ry="208" fill="#f9efcc" opacity=".47"/><path d="M380 371h46v248h-46z" fill="#977964"/><path d="M394 359h20v261h-20z" fill="#d4b59b"/><path d="M333 620h141c22 0 35 13 38 43H296c4-30 18-43 37-43z" fill="#7a5d4b"/><path d="M321 640h161c12 0 18 12 21 24H301c2-12 8-24 20-24z" fill="#aa8c70"/><path d="M309 206h187l129 233H179z" fill="#d39f78"/><path d="M330 211h147l102 198H228z" fill="#eac5a2"/><ellipse cx="402" cy="440" rx="222" ry="26" fill="#b58163"/><ellipse cx="402" cy="436" rx="214" ry="19" fill="#f4d5b5"/><ellipse cx="402" cy="215" rx="92" ry="20" fill="#efd6b5"/><ellipse cx="401" cy="212" rx="70" ry="10" fill="#d4ac8b"/>
+</svg>

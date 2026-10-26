@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="hoodie illustration">
+  <defs><radialGradient id="glow"><stop stop-color="#ffffff" stop-opacity=".26"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="400" cy="399" r="340" fill="url(#glow)" />
+  <ellipse cx="401" cy="675" rx="251" ry="30" fill="#927666" opacity=".13"/><path d="M289 220 210 263 119 520l121 39 41-103-5 204h254l-7-203 43 102 115-42-93-258-82-39z" fill="#b98371"/><path d="m293 220-76 41-78 237 83 29 64-146-6 247h248l-8-247 64 146 82-28-83-237-78-42z" fill="#d9aa97"/><path d="M312 230c-4-79 34-124 89-124 57 0 91 49 91 122l-47 68h-92z" fill="#b37c6a"/><path d="M328 228c-2-62 29-99 73-99 45 0 72 40 75 99l-36 49h-75z" fill="#e8c0ad"/><path d="M359 279c20 27 61 31 84 0" fill="none" stroke="#b98371" stroke-width="8"/><path d="M364 278 354 387M437 281l12 105" fill="none" stroke="#f5e0d3" stroke-width="7" stroke-linecap="round"/><path d="M337 461h125l30 114H307z" fill="#c88e7c"/><path d="M337 461h125" stroke="#ad7261" stroke-width="8"/><path d="M278 642h252" stroke="#b37c6a" stroke-width="10"/>
+</svg>

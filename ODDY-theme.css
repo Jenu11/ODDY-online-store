@@ -1,0 +1,109 @@
+/* =====================================================================
+   ODDY — TEAL / INK / OFF-WHITE BRAND THEME
+   Inspired by the exact #2E8C9A teal in your uploaded logo.
+   This file changes colors only; the website structure and logic stay intact.
+
+   EDIT HERE: Change these six values to customize the overall palette.
+   ===================================================================== */
+:root {
+  --oddy-teal: #2E8C9A;       /* Official ODDY teal - accents and badges */
+  --oddy-teal-dark: #176574;  /* Accessible teal for prices and headings */
+  --oddy-ink: #14282E;        /* Main text, navigation, dark panels */
+  --oddy-background: #F5F9FA; /* Website background */
+  --oddy-card: #FFFFFF;       /* Cards and overlays */
+  --oddy-wash: #E2F0F2;       /* Pale-teal background sections */
+
+  /* Connect ODDY colors to the existing Loom & Leaf CSS variables. */
+  --cream: var(--oddy-background);
+  --paper: var(--oddy-card);
+  --ink: var(--oddy-ink);
+  --green: var(--oddy-teal-dark);
+  --soft-green: var(--oddy-wash);
+  --peach: var(--oddy-teal);
+  --rose: #E7F3F4;
+  --muted: #53686F;
+  --line: #D6E4E7;
+  --shadow: 0 18px 45px rgba(20, 40, 46, .11);
+}
+
+/* Navigation and site identity */
+.announcement { background: var(--oddy-ink); color: #EAF6F8; }
+.site-header { background: rgba(255, 255, 255, .96); border-bottom-color: var(--line); }
+.brand-period { color: var(--oddy-teal); }
+.navigation a:hover, .footer a:hover { color: var(--oddy-teal-dark); }
+.cart-button { border-color: #C9DCE0; background: var(--oddy-card); }
+.cart-button:hover { border-color: var(--oddy-teal); background: #EEF6F7; }
+.cart-count { background: var(--oddy-teal-dark); color: #fff; }
+
+/* Main hero and promotional styling */
+.hero { background: radial-gradient(ellipse at 73% 11%, #EDF6F7 0%, transparent 47%); }
+.eyebrow, .section-kicker { color: var(--oddy-teal-dark); }
+.eyebrow-line { background: var(--oddy-teal); }
+h1 em, h2 em { color: var(--oddy-teal-dark); }
+.button-dark { background: var(--oddy-ink); color: #fff; }
+.button-dark:hover { background: var(--oddy-teal-dark); }
+.button-outline { border-color: #AAC8CE; }
+.button-outline:hover { border-color: var(--oddy-teal-dark); background: #E7F3F5; }
+.button-light { background: #fff; color: var(--oddy-ink); }
+.button-light:hover { background: #DCF2F4; }
+.text-link { border-bottom-color: var(--oddy-teal-dark); }
+.hero-visual { background: linear-gradient(140deg, #D8EFF2 0%, #A8D4DC 100%); }
+.hero-orbit { background: #E9F8FA; }
+.orbit-two { background: #68B4C1; }
+.hero-small-image { background: #F6FBFC; border-color: #F6FBFC; }
+.hero-sticker { background: var(--oddy-ink); color: #fff; box-shadow: 0 12px 30px rgba(20, 40, 46, .19); }
+.hero-sticker > span { background: #fff; border-radius: 50%; padding: 4px; }
+.hero-side-label { color: #235968; }
+
+/* Value strip, collection, and product UI */
+.values-strip { background: #E8F2F4; }
+.values-grid { color: #385760; }
+.values-grid span + span { border-left-color: #C9DDE1; }
+.values-grid b { color: var(--oddy-teal-dark); }
+.filter-pill { border-color: #C7D9DE; color: #37535A; }
+.filter-pill:hover, .filter-pill.active {
+  background: var(--oddy-teal-dark); border-color: var(--oddy-teal-dark); color: #fff;
+}
+.search-wrap { background: var(--oddy-card); border-color: #C8DCE0; color: #58757D; }
+.search-wrap:focus-within { outline: 2px solid var(--oddy-teal); outline-offset: 1px; }
+.product-card { background: var(--oddy-card); border-color: var(--line); }
+.product-image {
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--product-bg, #DDECF0) 47%, #fff),
+    color-mix(in srgb, var(--product-bg, #DDECF0) 55%, #B6DBE2));
+}
+.product-badge { background: #fff; color: var(--oddy-ink); border: 1px solid #D1E5E9; }
+.product-price { color: var(--oddy-teal-dark); }
+.add-button { border-color: #AFCBD1; }
+.add-button:hover { background: var(--oddy-teal-dark); border-color: var(--oddy-teal-dark); color: #fff; }
+.empty-results { background: #fff; border-color: #AFD0D6; }
+
+/* About and FAQ sections */
+.story-section { background: var(--oddy-wash); }
+.story-art { background: #B6DAE1; }
+.art-circle { background: #86C3CD; }
+.art-frame { background: #F9FCFC; border-color: #EFF8FA; box-shadow: 19px 23px 0 rgba(18, 89, 104, .16); }
+.story-copy > p:not(.section-kicker) { color: #456970; }
+.faq-items details, .faq-items details:first-child { border-color: #C9DDE0; }
+
+/* Dark brand callout, footer */
+.callout { background: #11323A; color: #fff; }
+.callout .section-kicker { color: #A8E0E8; }
+.callout h2 em { color: #BCE6EB; }
+.callout p:not(.section-kicker) { color: #CCE0E4; }
+.footer { background: #F0F6F7; border-color: var(--line); }
+
+/* Cart, dialogs, form fields */
+.scrim { background: rgba(13, 32, 39, .52); }
+.cart-drawer, .order-modal { background: var(--oddy-card); }
+.icon-button, .quantity-controls { border-color: #C9DEE2; }
+.cart-line img { background: #E3F0F3; }
+.cart-line .price { color: var(--oddy-teal-dark); }
+.remove-item { color: #8B4141; }
+.full-width:disabled { background: #AEBFC2; color: #173038; }
+.order-modal textarea { border-color: #BDD7DC; background: #F4FAFB; }
+.toast { background: var(--oddy-ink); color: #fff; }
+:focus-visible { outline-color: var(--oddy-teal); }
+@media (max-width: 760px) {
+  .navigation.open { background: #fff; border-bottom-color: var(--line); }
+}

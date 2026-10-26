@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ODDY — a customizable sample online store.">
+  <meta name="theme-color" content="#F5F9FA">
+  <title>ODDY | Your Passion. In Fashion.</title>
+  <link rel="icon" type="image/png" href="assets/ODDY-logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <!-- ODDY custom color theme: edit ODDY-theme.css -->
+  <link rel="stylesheet" href="ODDY-theme.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="announcement">A sample online store for learning — no real purchases or payments</div>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <!-- CHANGE THIS: Your shop name -->
+      <a href="#top" class="brand" aria-label="ODDY home">
+        <span class="brand-icon" aria-hidden="true"><span class="oddy-shared-logo" aria-hidden="true"></span></span>
+        <span>ODDY<span class="brand-period">.</span></span>
+      </a>
+      <nav class="navigation" id="siteNavigation" aria-label="Main navigation">
+        <a href="#shop">Shop all</a>
+        <a href="#story">Our story</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-button" id="openCart" type="button" aria-label="Open shopping cart, 0 items">
+          <svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          <span class="cart-label">Cart</span><span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-button" id="menuToggle" aria-controls="siteNavigation" aria-expanded="false" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> HIT THAT FIT</div>
+          <h1 id="heroTitle">Your Passion.<br><em>In Fashion.</em></h1>
+          <p>Thoughtful essentials, fresh favorites, and simple things that make every day feel a little more yours.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#shop">Explore the collection <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#story">Get to know us <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-footnote"><span class="asterisk"><span class="oddy-shared-logo" aria-hidden="true"></span></span><span>Your shop, your style. Everything here is editable in VS Code.</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Illustrated collection of everyday products">
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+          <div class="hero-main-image"><img src="assets/lamp.svg" alt="Illustration of a warm table lamp"></div>
+          <div class="hero-small-image"><img src="assets/mug.svg" alt="Illustration of a ceramic mug"></div>
+          <div class="hero-sticker">MADE FOR<br>EVERYDAY <span><span class="oddy-shared-logo" aria-hidden="true"></span></span></div>
+          <div class="hero-side-label">THE NEW EVERYDAY / 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values-strip" aria-label="Store highlights">
+      <div class="container values-grid">
+        <span><b>01</b> Carefully curated samples</span>
+        <span><b>02</b> Simple, timeless style</span>
+        <span><b>03</b> Built to make your own</span>
+      </div>
+    </section>
+
+    <section class="shop-section section" id="shop" aria-labelledby="shopTitle">
+      <div class="container">
+        <div class="section-top">
+          <div><p class="section-kicker">THE COLLECTION</p><h2 id="shopTitle">Find your new <em>favorite.</em></h2></div>
+          <p class="section-intro">A little of this, a little of that — curated for wherever your day takes you.</p>
+        </div>
+        <div class="shop-controls">
+          <div class="filter-pills" id="categoryFilters" role="group" aria-label="Filter products by category">
+            <button type="button" class="filter-pill active" data-category="All" aria-pressed="true">All items</button>
+            <button type="button" class="filter-pill" data-category="Home" aria-pressed="false">Home</button>
+            <button type="button" class="filter-pill" data-category="Lifestyle" aria-pressed="false">Lifestyle</button>
+            <button type="button" class="filter-pill" data-category="Stationery" aria-pressed="false">Stationery</button>
+            <button type="button" class="filter-pill" data-category="Apparel" aria-pressed="false">Apparel</button>
+          </div>
+          <label class="search-wrap" for="productSearch"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.8" cy="10.8" r="7"/><path d="m16 16 5 5"/></svg><input type="search" id="productSearch" placeholder="Search products..." autocomplete="off"></label>
+        </div>
+        <p class="result-count" id="resultCount" role="status">Showing 8 items</p>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="shop-note">* Sample products and prices in Philippine pesos (₱). Replace with your actual inventory before launching.</div>
+      </div>
+    </section>
+
+    <section class="story-section section" id="story" aria-labelledby="storyTitle">
+      <div class="container story-grid">
+        <div class="story-art" aria-hidden="true"><span class="art-circle"></span><span class="art-frame"><span>GOOD<br>THINGS<br>GROW.</span></span><span class="art-spark"><span class="oddy-shared-logo" aria-hidden="true"></span></span></div>
+        <div class="story-copy"><p class="section-kicker">A LITTLE ABOUT US</p><h2 id="storyTitle">A store with a<br><em>personal touch.</em></h2><p>This is your space to tell customers why you started your business, what you believe in, and what makes your products special.</p><p>You can replace this sample text with your own story once you've chosen your brand and products.</p><a class="text-link" href="#shop">Browse our finds <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="faq-section section" id="faq" aria-labelledby="faqTitle">
+      <div class="container faq-grid"><div><p class="section-kicker">GOOD TO KNOW</p><h2 id="faqTitle">A few quick<br><em>answers.</em></h2></div><div class="faq-items"><details><summary>Can customers really buy items here?</summary><p>Not yet. This starter demonstrates shopping-cart features, but it does not collect money, create real orders, or send customer information to a store owner.</p></details><details><summary>Can I upload my own products?</summary><p>Yes. Edit the PRODUCTS list in app.js and replace the illustrations inside the assets folder with your own product photos.</p></details><details><summary>Can I connect real payment methods later?</summary><p>Yes, with a secure e-commerce solution or payment provider. A published front-end alone is not a safe checkout system.</p></details></div></div>
+    </section>
+
+    <section class="newsletter" aria-labelledby="calloutTitle"><div class="container callout"><span class="callout-star" aria-hidden="true"><span class="oddy-shared-logo" aria-hidden="true"></span></span><div><p class="section-kicker">THIS IS ONLY THE BEGINNING</p><h2 id="calloutTitle">Make it <em>your own.</em></h2><p>Give your business a beautiful online home, one edit at a time.</p></div><a href="#top" class="button button-light">Back to top <span aria-hidden="true">↑</span></a></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><a href="#top" class="brand"><span class="brand-icon" aria-hidden="true"><span class="oddy-shared-logo" aria-hidden="true"></span></span><span>ODDY<span class="brand-period">.</span></span></a><span>© <span id="copyrightYear"></span> ODDY. Demo website for learning.</span><a href="#shop">Shop collection ↑</a></div></footer>
+
+  <!-- Cart drawer: opened with the Cart button -->
+  <div class="scrim" id="cartScrim" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert>
+    <div class="drawer-header"><div><p class="section-kicker">YOUR PICKS</p><h2 id="cartTitle">Shopping cart <span id="drawerCount">(0)</span></h2></div><button type="button" class="icon-button" id="closeCart" aria-label="Close cart">✕</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="drawer-bottom"><div class="subtotal"><span>Subtotal</span><strong id="subtotal">₱0.00</strong></div><p>Shipping and payment are not included in this demo.</p><button class="button button-dark full-width" type="button" id="checkoutButton">Review demo order <span aria-hidden="true">↗</span></button><button class="continue-button" id="continueShopping" type="button">Continue shopping</button></div>
+  </aside>
+
+  <!-- Demo order preview: a real payment processor is NOT connected -->
+  <div class="scrim order-scrim" id="orderScrim" hidden></div>
+  <section class="order-modal" id="orderModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="orderTitle" inert>
+    <button class="icon-button order-close" type="button" id="closeOrder" aria-label="Close order preview">✕</button>
+    <span class="order-emoji" aria-hidden="true"><span class="oddy-shared-logo" aria-hidden="true"></span></span>
+    <p class="section-kicker">DEMO ONLY — NO PAYMENT</p><h2 id="orderTitle">Your order preview</h2><p>This example does not place an order. You can copy the summary below for practice or testing.</p>
+    <textarea id="orderSummary" readonly aria-label="Demo order summary"></textarea>
+    <div class="modal-actions"><button class="button button-dark" id="copyOrder" type="button">Copy summary</button><button class="button button-outline" id="backToCart" type="button">Back to cart</button></div>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
