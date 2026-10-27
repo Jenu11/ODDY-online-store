@@ -297,10 +297,10 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  opacity: .75;
+  opacity: 1;
   transform: scale(1.025);
   transform-origin: center;
-  filter: saturate(1.01) contrast(1.03);
+  filter: saturate(1.05) contrast(1.06) brightness(1.02);
   z-index: 0;
 }
 .hero-visual.hero-photo-visual::before {
@@ -311,15 +311,15 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
   pointer-events: none;
   background:
     linear-gradient(180deg,
-      rgba(0, 43, 77, .34) 0%,
-      rgba(0, 43, 77, .06) 32%,
-      rgba(0, 43, 77, .02) 53%,
-      rgba(0, 43, 77, .52) 100%),
+      rgba(0, 43, 77, .16) 0%,
+      rgba(0, 43, 77, .03) 32%,
+      rgba(0, 43, 77, .01) 53%,
+      rgba(0, 43, 77, .22) 100%),
     linear-gradient(90deg,
-      rgba(0, 43, 77, .14) 0%,
+      rgba(0, 43, 77, .07) 0%,
       transparent 26%,
       transparent 76%,
-      rgba(0, 43, 77, .12) 100%);
+      rgba(0, 43, 77, .06) 100%);
 }
 .hero-visual.hero-photo-visual::after {
   content: "";
@@ -327,7 +327,7 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  box-shadow: inset 0 0 75px rgba(0, 43, 77, .19);
+  box-shadow: inset 0 0 42px rgba(0, 43, 77, .10);
   border-radius: inherit;
 }
 
