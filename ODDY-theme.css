@@ -256,3 +256,101 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
     box-shadow: 0 16px 30px rgba(0, 43, 77, .10);
   }
 }
+
+
+/* ============================================================
+   ODDY FASHION CAMPAIGN HERO — V1
+   Editorial Didone-inspired headings; inspired by the provided
+   Brain Storm typography reference, not a copy of its font.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;500;600;700&display=swap");
+
+:root {
+  --oddy-editorial-font: "Bodoni Moda", "Didot", "Bodoni MT", Georgia, serif;
+}
+
+/* Only hero typography changes; the ODDY logo retains its styling. */
+.hero-copy h1,
+.hero-copy h1 em,
+.hero-photo-visual .hero-side-label,
+.hero-photo-visual .hero-style-note {
+  font-family: var(--oddy-editorial-font);
+}
+.hero-copy h1 { letter-spacing: -.055em; line-height: 1.03; }
+.hero-copy h1 em { font-weight: 500; }
+
+/* Replaces cartoon artwork, image tiles, stickers and orbital circles. */
+.hero-visual.hero-photo-visual {
+  position: relative;
+  height: 530px;
+  background: var(--oddy-navy);
+  border-radius: 145px 28px 28px 28px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-visual.hero-photo-visual .hero-fashion-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: .75;
+  transform: none;
+  filter: none;
+}
+.hero-photo-visual .hero-side-label {
+  position: absolute;
+  z-index: 2;
+  top: 25px;
+  left: 27px;
+  width: min(77%, 345px);
+  max-width: none;
+  color: #F2EFDE;
+  font-size: clamp(19px, 1.7vw, 25px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.028em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(0, 26, 49, .35);
+}
+.hero-photo-visual .hero-style-note {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 22px;
+  max-width: min(80%, 300px);
+  padding: 16px 19px 17px;
+  background: rgba(242, 239, 222, .92);
+  border: 1px solid rgba(0, 43, 77, .12);
+  color: #002B4D;
+  font-weight: 600;
+  font-size: clamp(23px, 2.5vw, 34px);
+  letter-spacing: -.055em;
+  line-height: 1.05;
+  text-align: right;
+  text-transform: uppercase;
+  box-shadow: 0 12px 34px rgba(0, 28, 54, .14);
+}
+@media (max-width: 760px) {
+  .hero-visual.hero-photo-visual {
+    height: 470px;
+    border-radius: 110px 22px 22px 22px;
+  }
+  .hero-photo-visual .hero-side-label {
+    top: 25px;
+    left: 23px;
+    width: min(76%, 330px);
+    font-size: clamp(17px, 4.8vw, 23px);
+  }
+  .hero-photo-visual .hero-style-note {
+    right: 16px;
+    bottom: 16px;
+    font-size: clamp(19px, 5.5vw, 27px);
+    padding: 13px 16px;
+  }
+}
+@media (max-width: 490px) {
+  .hero-visual.hero-photo-visual { height: 405px; border-radius: 86px 18px 18px 18px; }
+  .hero-photo-visual .hero-side-label { font-size: 17px; width: 69%; }
+  .hero-photo-visual .hero-style-note { font-size: 20px; max-width: 70%; }
+}
