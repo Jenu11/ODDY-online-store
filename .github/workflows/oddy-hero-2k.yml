@@ -1,0 +1,68 @@
+name: Upgrade ODDY Hero Photo to 2K
+
+on:
+  push:
+    paths:
+      - .github/workflows/oddy-hero-2k.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out ODDY website
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: python -m pip install --quiet Pillow
+      - name: Upscale existing ODDY fashion photo to 2K
+        shell: bash
+        run: |
+          python - <<'PY'
+          from PIL import Image, ImageFilter
+          from pathlib import Path
+
+          photo_path = Path('assets/oddy-fashion-hero.webp')
+          if not photo_path.exists():
+              raise SystemExit('ODDY hero image not found')
+
+          with Image.open(photo_path) as source:
+              photo = source.convert('RGB')
+
+          width, height = photo.size
+          if width >= height:
+              new_width = 2048
+              new_height = round(height * (2048 / width))
+          else:
+              new_height = 2048
+              new_width = round(width * (2048 / height))
+
+          if max(width, height) >= 2048:
+              print(f'Already 2K or larger: {width} x {height}; no change required.')
+          else:
+              photo = photo.resize((new_width, new_height), Image.Resampling.LANCZOS)
+              photo = photo.filter(ImageFilter.UnsharpMask(radius=1.2, percent=105, threshold=2))
+              photo.save(photo_path, format='WEBP', quality=92, method=6)
+              print(f'Hero photo upgraded: {width} x {height} -> {new_width} x {new_height}.')
+              print('Original crop and aspect ratio preserved.')
+          PY
+      - name: Commit upgraded website image
+        shell: bash
+        run: |
+          if git diff --quiet -- assets/oddy-fashion-hero.webp; then
+            echo "2K hero image already present."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/oddy-fashion-hero.webp
+            git commit -m "Upgrade ODDY homepage model photo to 2K"
+            git push
+          fi
