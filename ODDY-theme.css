@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;500;600;700&display=swap");
+
 /* ===============================================================
    ODDY | CREAM + DEEP NAVY DESIGN SYSTEM
    Primary colors supplied by ODDY:
@@ -257,19 +259,16 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
   }
 }
 
-
 /* ============================================================
-   ODDY FASHION CAMPAIGN HERO — V1
-   Editorial Didone-inspired headings; inspired by the provided
-   Brain Storm typography reference, not a copy of its font.
+   ODDY FASHION CAMPAIGN HERO — V2
+   Luxury editorial serif inspired by supplied Brain Storm reference.
+   Photo remains 75% opaque; no illustration or circular sticker.
    ============================================================ */
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;500;600;700&display=swap");
-
 :root {
   --oddy-editorial-font: "Bodoni Moda", "Didot", "Bodoni MT", Georgia, serif;
 }
 
-/* Only hero typography changes; the ODDY logo retains its styling. */
+/* Preserve the ODDY wordmark and all other site typography. */
 .hero-copy h1,
 .hero-copy h1 em,
 .hero-photo-visual .hero-side-label,
@@ -279,7 +278,9 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
 .hero-copy h1 { letter-spacing: -.055em; line-height: 1.03; }
 .hero-copy h1 em { font-weight: 500; }
 
-/* Replaces cartoon artwork, image tiles, stickers and orbital circles. */
+/* Model image fills the editorial frame without stretching.
+   Subtle navy-edge feathering and a bottom vignette visually
+   integrate the blue-sky photo with the ODDY palette. */
 .hero-visual.hero-photo-visual {
   position: relative;
   height: 530px;
@@ -290,67 +291,126 @@ h1 em, h2 em { color: var(--oddy-navy-mid); }
 }
 .hero-visual.hero-photo-visual .hero-fashion-photo {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit: cover;
+  object-position: center 30%;
   opacity: .75;
-  transform: none;
-  filter: none;
+  transform: scale(1.025);
+  transform-origin: center;
+  filter: saturate(1.01) contrast(1.03);
+  z-index: 0;
 }
-.hero-photo-visual .hero-side-label {
+.hero-visual.hero-photo-visual::before {
+  content: "";
   position: absolute;
-  z-index: 2;
-  top: 25px;
-  left: 27px;
-  width: min(77%, 345px);
-  max-width: none;
-  color: #F2EFDE;
-  font-size: clamp(19px, 1.7vw, 25px);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -.028em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 14px rgba(0, 26, 49, .35);
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(0, 43, 77, .34) 0%,
+      rgba(0, 43, 77, .06) 32%,
+      rgba(0, 43, 77, .02) 53%,
+      rgba(0, 43, 77, .52) 100%),
+    linear-gradient(90deg,
+      rgba(0, 43, 77, .14) 0%,
+      transparent 26%,
+      transparent 76%,
+      rgba(0, 43, 77, .12) 100%);
 }
+.hero-visual.hero-photo-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: inset 0 0 75px rgba(0, 43, 77, .19);
+  border-radius: inherit;
+}
+
+/* Matching unobstructed campaign captions — exactly 15px. */
+.hero-photo-visual .hero-side-label,
 .hero-photo-visual .hero-style-note {
   position: absolute;
   z-index: 2;
-  right: 22px;
-  bottom: 22px;
-  max-width: min(80%, 300px);
-  padding: 16px 19px 17px;
-  background: rgba(242, 239, 222, .92);
-  border: 1px solid rgba(0, 43, 77, .12);
-  color: #002B4D;
-  font-weight: 600;
-  font-size: clamp(23px, 2.5vw, 34px);
-  letter-spacing: -.055em;
-  line-height: 1.05;
-  text-align: right;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  color: #F2EFDE;
+  font-family: var(--oddy-editorial-font);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.43;
+  letter-spacing: .095em;
   text-transform: uppercase;
-  box-shadow: 0 12px 34px rgba(0, 28, 54, .14);
+  text-shadow: 0 1px 8px rgba(0, 30, 54, .48);
 }
+.hero-photo-visual .hero-side-label {
+  top: 27px;
+  left: 28px;
+  right: auto;
+  width: min(76%, 345px);
+  max-width: 345px;
+  text-align: left;
+}
+.hero-photo-visual .hero-style-note {
+  right: 26px;
+  bottom: 24px;
+  left: auto;
+  width: auto;
+  min-width: 0;
+  max-width: 72%;
+  text-align: right;
+}
+
 @media (max-width: 760px) {
   .hero-visual.hero-photo-visual {
     height: 470px;
     border-radius: 110px 22px 22px 22px;
   }
+  .hero-visual.hero-photo-visual .hero-fashion-photo {
+    object-position: center 24%;
+    transform: scale(1.02);
+  }
   .hero-photo-visual .hero-side-label {
     top: 25px;
     left: 23px;
-    width: min(76%, 330px);
-    font-size: clamp(17px, 4.8vw, 23px);
+    width: min(78%, 330px);
+    font-size: 15px;
+    line-height: 1.43;
+    letter-spacing: .09em;
   }
   .hero-photo-visual .hero-style-note {
-    right: 16px;
-    bottom: 16px;
-    font-size: clamp(19px, 5.5vw, 27px);
-    padding: 13px 16px;
+    right: 18px;
+    bottom: 18px;
+    padding: 0;
+    max-width: 75%;
+    font-size: 15px;
+    line-height: 1.43;
+    letter-spacing: .09em;
   }
 }
 @media (max-width: 490px) {
-  .hero-visual.hero-photo-visual { height: 405px; border-radius: 86px 18px 18px 18px; }
-  .hero-photo-visual .hero-side-label { font-size: 17px; width: 69%; }
-  .hero-photo-visual .hero-style-note { font-size: 20px; max-width: 70%; }
+  .hero-visual.hero-photo-visual {
+    height: 405px;
+    border-radius: 86px 18px 18px 18px;
+  }
+  .hero-photo-visual .hero-side-label {
+    top: 24px;
+    left: 21px;
+    width: 70%;
+    font-size: 15px;
+  }
+  .hero-photo-visual .hero-style-note {
+    right: 17px;
+    bottom: 17px;
+    max-width: 70%;
+    font-size: 15px;
+  }
 }
