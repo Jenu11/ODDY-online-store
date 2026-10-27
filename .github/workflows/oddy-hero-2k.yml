@@ -1,9 +1,9 @@
-name: Upgrade ODDY Hero Photo to 2K
+name: Install ODDY high-quality original-source 2K image
 
 on:
   push:
     paths:
-      - .github/workflows/oddy-hero-2k.yml
+      - ".github/workflows/oddy-hero-2k.yml"
   workflow_dispatch:
 
 permissions:
@@ -13,56 +13,37 @@ jobs:
   upgrade-hero:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out ODDY website
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Install Pillow
-        run: python -m pip install --quiet Pillow
-      - name: Upscale existing ODDY fashion photo to 2K
+      - name: Validate and install original-source 2K photo
         shell: bash
         run: |
           python - <<'PY'
-          from PIL import Image, ImageFilter
+          import base64, hashlib
           from pathlib import Path
-
-          photo_path = Path('assets/oddy-fashion-hero.webp')
-          if not photo_path.exists():
-              raise SystemExit('ODDY hero image not found')
-
-          with Image.open(photo_path) as source:
-              photo = source.convert('RGB')
-
-          width, height = photo.size
-          if width >= height:
-              new_width = 2048
-              new_height = round(height * (2048 / width))
-          else:
-              new_height = 2048
-              new_width = round(width * (2048 / height))
-
-          if max(width, height) >= 2048:
-              print(f'Already 2K or larger: {width} x {height}; no change required.')
-          else:
-              photo = photo.resize((new_width, new_height), Image.Resampling.LANCZOS)
-              photo = photo.filter(ImageFilter.UnsharpMask(radius=1.2, percent=105, threshold=2))
-              photo.save(photo_path, format='WEBP', quality=92, method=6)
-              print(f'Hero photo upgraded: {width} x {height} -> {new_width} x {new_height}.')
-              print('Original crop and aspect ratio preserved.')
+          from io import BytesIO
+          from PIL import Image
+          folder=Path('.oddy-staging')
+          paths=sorted(folder.glob('part-*.txt'))
+          if len(paths)!=22:
+              raise SystemExit(f'Expected 22 image fragments, found {len(paths)}')
+          data=base64.b64decode(''.join(p.read_text() for p in paths),validate=True)
+          if hashlib.sha256(data).hexdigest() != '5b561b5543032a89abd75b48f011c36807914fa9b56fbb474865de1ea30f3a27':
+              raise SystemExit('High-resolution photo transfer hash mismatch')
+          img=Image.open(BytesIO(data))
+          if img.size != (1365, 2048) or img.format != 'WEBP':
+              raise SystemExit(f'Unexpected photo format or dimensions: {img.size}, {img.format}')
+          out=Path('assets/oddy-fashion-hero.webp')
+          out.write_bytes(data)
+          print(f'Installed 2K original-source hero: {img.size}, {len(data)} bytes')
           PY
-      - name: Commit upgraded website image
+      - name: Commit photo and remove temporary transfer fragments
         shell: bash
         run: |
-          if git diff --quiet -- assets/oddy-fashion-hero.webp; then
-            echo "2K hero image already present."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add assets/oddy-fashion-hero.webp
-            git commit -m "Upgrade ODDY homepage model photo to 2K"
-            git push
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/oddy-fashion-hero.webp
+          git rm -r .oddy-staging
+          git commit -m "Replace low-quality hero upscale with source-quality 2K photo"
+          git push
